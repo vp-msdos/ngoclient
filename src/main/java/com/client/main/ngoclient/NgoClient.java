@@ -64,7 +64,9 @@ public class NgoClient {
 	public HttpResponse pushPostRequest(String actionType, String handlerName, Object serilizedObject) {
 		List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
 		String convertedString = convertObjectToString(serilizedObject);
-		urlParameters.add(new BasicNameValuePair("Obj", convertedString));
+		urlParameters.add(new BasicNameValuePair(NgoMConstant.ACTION_TYPE.toString(), actionType));
+		urlParameters.add(new BasicNameValuePair(NgoMConstant.HANDLER_NAME.toString(), handlerName));
+		urlParameters.add(new BasicNameValuePair(NgoMConstant.OBJ.toString(), convertedString));
 		HttpResponse response = null;
 		try {
 			post.setEntity(new UrlEncodedFormEntity(urlParameters));

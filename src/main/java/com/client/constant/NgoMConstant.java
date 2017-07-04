@@ -2,5 +2,8 @@ package com.client.constant;
 
 public enum NgoMConstant {
 	POST,
-	GET
+	GET,
+	OBJ,
+	ACTION_TYPE,
+	HANDLER_NAME
 }
