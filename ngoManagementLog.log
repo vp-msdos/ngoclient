@@ -136,3 +136,9 @@
 04-07-2017 16:59:34 INFO  NgoManagementSystem:31 - Response from server 1 Test
 04-07-2017 17:00:25 INFO  NgoManagementSystem:23 - Ngo Managment System initializing...
 04-07-2017 17:00:25 INFO  NgoManagementSystem:24 - Initialize Ngo properties
+04-07-2017 17:01:40 INFO  NgoManagementSystem:24 - Ngo Managment System initializing...
+04-07-2017 17:01:40 INFO  NgoManagementSystem:25 - Initializing ngoconfig.properties
+04-07-2017 17:01:43 INFO  NgoManagementSystem:32 - Response from server 1 Test
+04-07-2017 17:04:10 INFO  NgoManagementSystem:24 - Ngo Managment System initializing...
+04-07-2017 17:04:10 INFO  NgoManagementSystem:25 - Initializing ngoconfig.properties
+04-07-2017 17:04:13 INFO  NgoManagementSystem:32 - Response from server 1 Test
