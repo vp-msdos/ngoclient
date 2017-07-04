@@ -29,21 +29,17 @@ public class NgoProperty {
 				return null;
 			}
 		};
-		Future future = NgoTaskExecutor.execute(propertyLoaderTask);
-		try {
-			if(future.get()!= null){
-				return;
-			}
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		NgoTimeProfiler.startTime();
+		NgoTaskExecutor.execute(propertyLoaderTask);
+		NgoTimeProfiler.endTime("PropertyLoader task completed in");
 		
 	}
 	
+	/**
+	 * Get property from ngoconfig.properties file
+	 * @param key
+	 * @return
+	 */
 	public static Object getProperty(String key){
 		return props.getProperty(key);
 	}
