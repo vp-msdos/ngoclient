@@ -13,6 +13,8 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.client.constant.NgoMConstant;
+import com.client.session.Session;
+import com.client.utilities.NgoProperty;
 import com.google.gson.Gson;
 
 /**
@@ -25,15 +27,14 @@ public class NgoClient {
 	private HttpClient httpclient;
 	private HttpPost post;
 	private HttpGet get;
-	private final String ngoServerServletUrl = "http://localhost:8080/ngo/NgoMainController";
 	
 	private NgoClient(){}
 	private NgoClient(String requestMethodType) {
 		httpclient = HttpClientBuilder.create().build();
 		if(requestMethodType.equals("POST")){
-		post = new HttpPost(ngoServerServletUrl);
+		post = new HttpPost(NgoProperty.getProperty("ngoMainControllerServletUrl").toString());
 		}else{
-		get = new HttpGet(ngoServerServletUrl);	
+		get = new HttpGet(NgoProperty.getProperty("ngoMainControllerServletUrl").toString());	
 		}
 	}
 	/**
@@ -83,9 +84,38 @@ public class NgoClient {
 	 * @return HttpResponse
 	 */
 	public HttpResponse pushGetRequest(){
-		// TODO To be implemented need basis.
+		
 		return null;
 		
+	}
+	
+	public HttpResponse pushPostRequestForSession(Session session){
+		List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+		HttpResponse response = null;
+		urlParameters.add(new BasicNameValuePair(NgoMConstant.STOP.toString(), NgoMConstant.STOP.toString()));
+		try {
+			post.setEntity(new UrlEncodedFormEntity(urlParameters));
+
+			response = httpclient.execute(post);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return response;
+	}
+	
+	public HttpResponse pushPostRequestForSessionInitial(Session session){
+		List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+		HttpResponse response = null;
+		String convertedString = convertObjectToString(session);
+		urlParameters.add(new BasicNameValuePair(NgoMConstant.SESSION.toString(), convertedString));
+		try {
+			post.setEntity(new UrlEncodedFormEntity(urlParameters));
+
+			response = httpclient.execute(post);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return response;
 	}
 
 	private String convertObjectToString(Object serilizedObject) {

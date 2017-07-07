@@ -8,6 +8,9 @@ public enum NgoMConstant {
 	HANDLER_NAME,
 	MemberCommandHandler,
 	INSERT,
-	OBJECT_NAME
+	OBJECT_NAME,
+	START,
+	STOP,
+	SESSION
 	
 }
