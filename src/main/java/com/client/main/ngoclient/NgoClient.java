@@ -65,7 +65,7 @@ public class NgoClient {
 		List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
 		String convertedString = convertObjectToString(serilizedObject);
 		urlParameters.add(new BasicNameValuePair(NgoMConstant.ACTION_TYPE.toString(), actionType));
-		urlParameters.add(new BasicNameValuePair(NgoMConstant.HANDLER_NAME.toString(), handlerName));
+		urlParameters.add(new BasicNameValuePair(NgoMConstant.OBJECT_NAME.toString(), handlerName));
 		urlParameters.add(new BasicNameValuePair(NgoMConstant.OBJ.toString(), convertedString));
 		HttpResponse response = null;
 		try {

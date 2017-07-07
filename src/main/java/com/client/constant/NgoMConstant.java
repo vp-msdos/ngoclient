@@ -5,5 +5,9 @@ public enum NgoMConstant {
 	GET,
 	OBJ,
 	ACTION_TYPE,
-	HANDLER_NAME
+	HANDLER_NAME,
+	MemberCommandHandler,
+	INSERT,
+	OBJECT_NAME
+	
 }

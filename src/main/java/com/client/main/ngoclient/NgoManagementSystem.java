@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 
 import com.client.main.tasks.NgoTaskExecutor;
 import com.client.main.tasks.PostRequestTask;
-import com.client.pojos.Emp;
+import com.client.pojos.Member;
 import com.client.utilities.NgoProperty;
 
 /**
@@ -24,10 +24,17 @@ public class NgoManagementSystem
     	logger.info("Ngo Managment System initializing...");
     	logger.info("Initializing ngoconfig.properties");
     	NgoProperty.loadNgoProperties();
-    	Emp emp = new Emp();
-    	emp.setId(1);
-    	emp.setEmpName("Test");
-    	PostRequestTask<String> task = new PostRequestTask<String>("", "", emp);
+    	/*Below code is for testing the flow purpose it can be followed in some 
+    	other user case as well*/
+    	Member member = new Member();
+        member.setName("Vishwas Pratap");
+        member.setUpdatedBy("V3");
+        member.setEmail("vp.msdos@gmail.com");
+        member.setAddress("lucknow");
+        member.setMemberType("Permanent");
+        String[] objectPathArray = member.getClass().getName().split("\\.");
+        String objectName = objectPathArray[objectPathArray.length-1];
+    	PostRequestTask<String> task = new PostRequestTask<String>("INSERT", objectName, member);
     	Future<String> futu = NgoTaskExecutor.execute(task);
     	logger.info("Response from server "+futu.get());
     }
