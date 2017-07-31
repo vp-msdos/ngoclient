@@ -3,10 +3,14 @@ package com.client.main.ngoclient;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+import javax.swing.SwingUtilities;
+
 import org.apache.log4j.Logger;
 
 import com.client.main.tasks.NgoTaskExecutor;
 import com.client.main.tasks.PostRequestTask;
+import com.client.main.ui.AdminLogin;
+import com.client.main.ui.MainFrame;
 import com.client.pojos.Member;
 import com.client.utilities.NgoProperty;
 
@@ -24,9 +28,15 @@ public class NgoManagementSystem
     	logger.info("Ngo Managment System initializing...");
     	logger.info("Initializing ngoconfig.properties");
     	NgoProperty.loadNgoProperties();
+    	SwingUtilities.invokeLater(new Runnable() {
+			
+			public void run() {
+				new AdminLogin();
+			}
+		});
     	/*Below code is for testing the flow purpose it can be followed in some 
     	other user case as well*/
-    	Member member = new Member();
+    	/*Member member = new Member();
         member.setName("Vishwas Pratap");
         member.setUpdatedBy("V3");
         member.setEmail("vp.msdos@gmail.com");
@@ -36,7 +46,7 @@ public class NgoManagementSystem
         String objectName = objectPathArray[objectPathArray.length-1];
     	PostRequestTask<String> task = new PostRequestTask<String>("INSERT", objectName, member);
     	Future<String> futu = NgoTaskExecutor.execute(task);
-    	logger.info("Response from server "+futu.get());
+    	logger.info("Response from server "+futu.get());*/
     }
     
    

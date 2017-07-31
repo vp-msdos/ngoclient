@@ -148,13 +148,11 @@ public class AdminLogin {
 	void addAllActionListeners() {
 		signupBtn.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				loginframe.setVisible(false);
 				SwingUtilities.invokeLater(new Runnable() {
 
-					@Override
 					public void run() {
 						new SignUp();
 
@@ -164,7 +162,6 @@ public class AdminLogin {
 		});
 		forgetBtn.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(loginframe, "Mail has been sent on your gmail account ",
 						"Forget Password", JOptionPane.INFORMATION_MESSAGE);
@@ -175,12 +172,11 @@ public class AdminLogin {
 
 		loginBtn.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				String value1 = user_text.getText();
 				String value2 = password_text.getText();
-				if (value1.equals("roseindia") && value2.equals("roseindia")) {
+				if (value1.equals("v") && value2.equals("v")) {
 					loginframe.setVisible(false);
 					new LoginPage();
 				} else {

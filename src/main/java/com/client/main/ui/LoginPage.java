@@ -347,7 +347,6 @@ public class LoginPage {
 	}
 	static void actionListener(final JButton btn, final JPanel searchframe, final JTextField phone, final JTextField gmail) {
 		btn.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			if(!(gmail.getText().contains("@") & gmail.getText().contains(".com"))){
